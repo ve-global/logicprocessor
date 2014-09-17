@@ -11,9 +11,6 @@
             "email": "steve.west@veinteractive.com"
         }
     ],
-    "require": {
-
-    },
 	"autoload": {
 		"psr-4": { "Ve\\LogicProcessor\\": "src/" }
 	}
