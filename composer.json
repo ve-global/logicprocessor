@@ -1,0 +1,20 @@
+{
+    "name": "ve-interactive/logicprocessor",
+    "description": "coming soon",
+    "require-dev": {
+        "codeception/codeception": "~2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve West",
+            "email": "steve.west@veinteractive.com"
+        }
+    ],
+    "require": {
+
+    },
+	"autoload": {
+		"psr-4": { "Ve\\LogicProcessor\\": "src/" }
+	}
+}

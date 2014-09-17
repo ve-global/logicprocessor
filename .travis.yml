@@ -1,0 +1,20 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+
+before_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - composer install
+
+script:
+  - vendor/bin/codecept run unit --coverage-xml
+
+after_script:
+  - php ocular.phar code-coverage:upload --format=php-clover tests/_log/coverage.xml
+
+notifications:
+  hipchat:
+    rooms:
+      secure: HRfK8eWG/ZtojVox+F0ZrbKZS4G/8++3huNUxywD3bWqUagz04EumdoEvWAjOMqC1nyJUlsbEq25Lo4ArdrGy7AlPo1/HhRW5idVyqO2qPZlQI5Hy9I9+qjL4QbU4RUsqsVQHYanzFzPYb9WMdR/uiE4UK1nG+FRkilt39SiSHU=
