@@ -12,7 +12,7 @@ script:
   - vendor/bin/codecept run unit --coverage-xml
 
 after_script:
-  - php ocular.phar code-coverage:upload --format=php-clover tests/_log/coverage.xml
+  - php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.xml
 
 notifications:
   hipchat:
