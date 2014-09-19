@@ -1,9 +1,6 @@
 {
     "name": "ve-interactive/logicprocessor",
-    "description": "coming soon",
-    "require-dev": {
-        "codeception/codeception": "~2.0"
-    },
+    "description": "Library for being able to define logical rules and conditional outcomes",
     "license": "MIT",
     "authors": [
         {
@@ -11,6 +8,9 @@
             "email": "steve.west@veinteractive.com"
         }
     ],
+	"require-dev": {
+		"codeception/codeception": "~2.0"
+	},
 	"autoload": {
 		"psr-4": { "Ve\\LogicProcessor\\": "src/" }
 	}

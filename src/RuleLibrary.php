@@ -1,0 +1,99 @@
+<?php
+
+
+namespace Ve\LogicProcessor;
+
+use InvalidArgumentException;
+
+/**
+ * Contains a collection of rules.
+ *
+ * @package Ve\LogicProcessor
+ */
+class RuleLibrary
+{
+
+	/**
+	 * @var string[]
+	 */
+	protected $rules;
+
+	/**
+	 * Adds a rule to the library.
+	 *
+	 * @param string $rule
+	 * @param string $class
+	 *
+	 * @return static
+	 */
+	public function add($rule, $class)
+	{
+		$this->rules[$rule] = $class;
+		return $this;
+	}
+
+	/**
+	 * Checks if the named rule is one that the library knows about.
+	 *
+	 * @param string $rule
+	 *
+	 * @return boolean
+	 */
+	public function has($rule)
+	{
+		return isset($this->rules[$rule]);
+	}
+
+	/**
+	 * Removes a rule from the library.
+	 *
+	 * @param string $rule
+	 *
+	 * return static
+	 */
+	public function remove($rule)
+	{
+		unset($this->rules[$rule]);
+		return $this;
+	}
+
+	/**
+	 * Gets the given rule.
+	 *
+	 * @param string $rule
+	 *
+	 * @return string
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	public function get($rule)
+	{
+		if ( ! $this->has($rule))
+		{
+			throw new InvalidArgumentException($rule.' is not a known rule.');
+		}
+
+		return $this->rules[$rule];
+	}
+
+	/**
+	 * Gets a constructed rule instance
+	 *
+	 * @param string $rule
+	 *
+	 * @return mixed
+	 *
+	 * @throws InvalidArgumentException
+	 */
+	public function getInstance($rule)
+	{
+		if ( ! $this->has($rule))
+		{
+			throw new InvalidArgumentException($rule.' is not a known rule.');
+		}
+
+		$class = $this->rules[$rule];
+		return new $class;
+	}
+
+}
