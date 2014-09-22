@@ -8,27 +8,54 @@ Library to process logical rules and apply outcomes based on the result of those
 
 Proposed data structure:
  ```JSON
-[
-    {
-        "rules": [
-            {
-                "name": "rule_name",
-                "modifier": "<=",
-                "value": 123
-            },
-            {
-                "name": "other_rule",
-                "modifier": "!=",
-                "value": "foobar"
-            }
-        ],
-        "result": [
-            {
-                "name": "promotion",
-                "modifier": "%",
-                "value": 123
-            }
-        ]
-    }
-]
+{
+    "i18n": {
+        "en": {
+            "name": "My awesome rules"
+        }
+    },
+    "rule_sets": [
+        {
+            "rules": [
+                {
+                    "name": "rule_name",
+                    "modifier": "<=",
+                    "value": 123
+                },
+                {
+                    "name": "other_rule",
+                    "modifier": "!=",
+                    "value": "foobar"
+                }
+            ],
+            "result": [
+                {
+                    "name": "promotion",
+                    "modifier": "%",
+                    "value": 123
+                }
+            ]
+        },
+        {
+            "rules": [
+                {
+                    "name": "basket.total",
+                    "modifier": ">",
+                    "value": 100
+                }
+            ],
+            "result": [
+                {
+                    "name": "order.total",
+                    "modifier": "fixed_reduction",
+                    "value": 10
+                },
+                {
+                    "name": "free_product",
+                    "value": 10
+                }
+            ]
+        }
+    ]
+}
 ```
