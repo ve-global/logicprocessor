@@ -1,20 +1,26 @@
 <?php
+/**
+ * @author Ve Kraken Development Team
+ * @license MIT
+ * @copyright 2014 Ve Interactive Ltd.
+ * @link http://veinteractive.com
+ */
 
 namespace Ve\LogicProcessor;
 
 use Codeception\TestCase\Test;
 
-class RuleLibraryTest extends Test
+class RuleCollectionTest extends Test
 {
 
 	/**
-	 * @var RuleLibrary
+	 * @var RuleCollection
 	 */
 	protected $ruleLibrary;
 
 	public function _before()
 	{
-		$this->ruleLibrary = new RuleLibrary;
+		$this->ruleLibrary = new RuleCollection;
 	}
 
 	public function testGetSetAndRemoveRule()

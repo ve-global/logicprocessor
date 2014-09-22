@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * @author Ve Kraken Development Team
+ * @license MIT
+ * @copyright 2014 Ve Interactive Ltd.
+ * @link http://veinteractive.com
+ */
 
 namespace Ve\LogicProcessor;
 
@@ -10,7 +15,7 @@ use InvalidArgumentException;
  *
  * @package Ve\LogicProcessor
  */
-class RuleLibrary
+class RuleCollection
 {
 
 	/**
@@ -24,7 +29,7 @@ class RuleLibrary
 	 * @param string $rule
 	 * @param string $class
 	 *
-	 * @return static
+	 * @return $this
 	 */
 	public function add($rule, $class)
 	{
@@ -49,7 +54,7 @@ class RuleLibrary
 	 *
 	 * @param string $rule
 	 *
-	 * return static
+	 * return $this
 	 */
 	public function remove($rule)
 	{
