@@ -17,6 +17,16 @@ abstract class AbstractRule
 {
 
 	/**
+	 * @var RuleCollection
+	 */
+	protected $collection;
+
+	public function __construct(RuleCollection $collection)
+	{
+		$this->collection = $collection;
+	}
+
+	/**
 	 * Returns true if the rule is valid
 	 *
 	 * @return boolean

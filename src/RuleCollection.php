@@ -33,6 +33,11 @@ class RuleCollection
 	 */
 	public function add($rule, $class)
 	{
+		if ( ! is_subclass_of($class, 'Ve\LogicProcessor\AbstractRule'))
+		{
+			throw new InvalidArgumentException($class.' does not extend AbstractRule.');
+		}
+
 		$this->rules[$rule] = $class;
 		return $this;
 	}
@@ -86,7 +91,7 @@ class RuleCollection
 	 *
 	 * @param string $rule
 	 *
-	 * @return mixed
+	 * @return AbstractRule
 	 *
 	 * @throws InvalidArgumentException
 	 */
@@ -98,7 +103,7 @@ class RuleCollection
 		}
 
 		$class = $this->rules[$rule];
-		return new $class;
+		return new $class($this);
 	}
 
 }

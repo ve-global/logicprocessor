@@ -26,7 +26,7 @@ class RuleCollectionTest extends Test
 	public function testGetSetAndRemoveRule()
 	{
 		$name = 'foobar';
-		$class = 'stdClass';
+		$class = 'Ve\LogicProcessor\AbstractRuleStub';
 
 		$this->assertFalse($this->ruleLibrary->has($name));
 
@@ -52,10 +52,18 @@ class RuleCollectionTest extends Test
 		$this->ruleLibrary->get('does not exist');
 	}
 
+	/**
+	 * @expectedException \InvalidArgumentException
+	 */
+	public function testAddInvalidRule()
+	{
+		$this->ruleLibrary->add('test', 'stdClass');
+	}
+
 	public function testGetInstance()
 	{
 		$name = 'foobar';
-		$class = 'stdClass';
+		$class = 'Ve\LogicProcessor\AbstractRuleStub';
 
 		$this->ruleLibrary->add($name, $class);
 
