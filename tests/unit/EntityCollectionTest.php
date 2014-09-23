@@ -23,11 +23,11 @@ class EntityCollectionTest extends Test
 		$name = 'test';
 		$class = 'Ve\LogicProcessor\EntityDefinitionInterfaceStub';
 
-		$this->assertFalse($this->entityCollection->has($name));
+		$this->assertFalse($this->entityCollection->hasEntity($name));
 
 		$this->entityCollection->add($name, $class);
 
-		$this->assertTrue($this->entityCollection->has($name));
+		$this->assertTrue($this->entityCollection->hasEntity($name));
 	}
 
 	/**
@@ -47,7 +47,7 @@ class EntityCollectionTest extends Test
 
 		$this->assertInstanceOf(
 			$class,
-			$this->entityCollection->get($name)
+			$this->entityCollection->getEntity($name)
 		);
 	}
 
@@ -58,7 +58,7 @@ class EntityCollectionTest extends Test
 
 		$this->entityCollection->add($name, $class);
 
-		$this->assertEquals($class, $this->entityCollection->get($name));
+		$this->assertEquals($class, $this->entityCollection->getEntity($name));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class EntityCollectionTest extends Test
 	 */
 	public function testGetInvalid()
 	{
-		$this->entityCollection->get('not here');
+		$this->entityCollection->getEntity('not here');
 	}
 
 }

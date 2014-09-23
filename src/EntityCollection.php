@@ -15,7 +15,7 @@ use InvalidArgumentException;
  *
  * @package Ve\LogicProcessor
  */
-class EntityCollection
+class EntityCollection implements EntityCollectionInterface
 {
 
 	/**
@@ -50,29 +50,19 @@ class EntityCollection
 	}
 
 	/**
-	 * Checks if the given entity is in the collection.
-	 *
-	 * @param string $name
-	 *
-	 * @return bool
+	 * {@inheritdoc}
 	 */
-	public function has($name)
+	public function hasEntity($name)
 	{
 		return isset($this->entities[$name]);
 	}
 
 	/**
-	 * Gets an instance of the named entity definition
-	 *
-	 * @param string $name
-	 *
-	 * @return EntityDefinitionInterface
-	 *
-	 * @throws InvalidArgumentException
+	 * {@inheritdoc}
 	 */
-	public function get($name)
+	public function getEntity($name)
 	{
-		if ( ! $this->has($name))
+		if ( ! $this->hasEntity($name))
 		{
 			throw new InvalidArgumentException($name . ' is not a known entity definition provider.');
 		}

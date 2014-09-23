@@ -29,7 +29,7 @@ interface EntityDefinitionInterface
 	 * Should return an array where the keys are the names of properties and the value is one or more types that apply
 	 * to the property.
 	 *
-	 * ['foo' => TypeEnum::$STRING, 'bar' => [TypeEnum::$STRING, TypeEnum::$NUMBER]]
+	 * ['foo' => 'string', 'bar' => ['string', 'number']]
 	 *
 	 * @return array
 	 */
