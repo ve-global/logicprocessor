@@ -6,7 +6,7 @@
 
 Library to process logical rules and apply outcomes based on the result of those rules.
 
-Proposed data structure:
+## Proposed data structure
  ```JSON
 {
     "i18n": {
@@ -16,6 +16,7 @@ Proposed data structure:
     },
     "rule_sets": [
         {
+        	"identifier": "Some internal identifier to identify this set of rules",
             "rules": [
                 {
                     "name": "rule_name",
@@ -37,6 +38,7 @@ Proposed data structure:
             ]
         },
         {
+        	"identifier": "set_123",
             "rules": [
                 {
                     "name": "basket.total",
