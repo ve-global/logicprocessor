@@ -9,21 +9,11 @@
 namespace Ve\LogicProcessor;
 
 /**
- * Main class for processing sets of logical rules
+ * Responsible for constructing sets of rules from formatted arrays.
  *
  * @package Ve\LogicProcessor
  */
-class Processor
+class Builder
 {
-
-	/**
-	 * @var RuleSet[]
-	 */
-	protected $rules = [];
-
-	public function addRuleSet(RuleSet $rule)
-	{
-
-	}
 
 }

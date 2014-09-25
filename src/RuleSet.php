@@ -8,17 +8,28 @@
 
 namespace Ve\LogicProcessor;
 
-/**
- * Defines a set of logical rules and an outcome should those rules validate.
- *
- * @package Ve\LogicProcessor
- */
 class RuleSet
 {
 
-	public function addRule()
-	{
+	/**
+	 * @var Rule
+	 */
+	protected $rule;
 
+	/**
+	 * @return Rule
+	 */
+	public function getRule()
+	{
+		return $this->rule;
+	}
+
+	/**
+	 * @param Rule $rule
+	 */
+	public function setRule(Rule $rule)
+	{
+		$this->rule = $rule;
 	}
 
 }
