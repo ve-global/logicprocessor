@@ -10,6 +10,7 @@ namespace Ve\LogicProcessor;
 
 use Codeception\TestCase\Test;
 use Mockery;
+use stdClass;
 
 class RuleSetTest extends Test
 {
@@ -30,7 +31,7 @@ class RuleSetTest extends Test
 
 		$this->set->setRule($rule);
 
-		$this->assertEquals($rule, $this->set->getRule());
+		$this->assertEquals($rule, $this->set->getRules());
 	}
 
 	public function testValidate()
@@ -53,6 +54,19 @@ class RuleSetTest extends Test
 		$this->assertTrue(
 			$this->set->isValid($context)
 		);
+	}
+
+	public function testApplyMutators()
+	{
+		$target = new stdClass;
+
+		$mutator = Mockery::mock('Ve\LogicProcessor\AbstractMutator');
+		$mutator->shouldReceive('mutate')
+			->with($target)
+			->once();
+
+		$this->set->addMutator($mutator);
+		$this->set->applyMutators($target);
 	}
 
 }

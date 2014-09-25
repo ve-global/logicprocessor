@@ -17,9 +17,14 @@ class RuleSet
 	protected $rule;
 
 	/**
+	 * @var AbstractMutator[]
+	 */
+	protected $mutators = [];
+
+	/**
 	 * @return AbstractRule
 	 */
-	public function getRule()
+	public function getRules()
 	{
 		return $this->rule;
 	}
@@ -30,6 +35,16 @@ class RuleSet
 	public function setRule(AbstractRule $rule)
 	{
 		$this->rule = $rule;
+	}
+
+	/**
+	 * Adds a mutator that will be called as a result of the RuleSet being valid.
+	 *
+	 * @param AbstractMutator $mutator
+	 */
+	public function addMutator(AbstractMutator $mutator)
+	{
+		$this->mutators[] = $mutator;
 	}
 
 	/**
@@ -51,7 +66,10 @@ class RuleSet
 	 */
 	public function applyMutators($target)
 	{
-
+		foreach ($this->mutators as $mutator)
+		{
+			$mutator->mutate($target);
+		}
 	}
 
 }

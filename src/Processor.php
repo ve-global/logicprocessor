@@ -21,9 +21,17 @@ class Processor
 	 */
 	protected $ruleSets = [];
 
+	/**
+	 * Adds a rule set for evaluation.
+	 *
+	 * @param RuleSet $rule
+	 *
+	 * @return $this
+	 */
 	public function addRuleSet(RuleSet $rule)
 	{
 		$this->ruleSets[] = $rule;
+		return $this;
 	}
 
 	/**
