@@ -26,11 +26,33 @@ class RuleSetTest extends Test
 
 	public function testGetAndSetRule()
 	{
-		$rule = new Rule;
+		$rule = new NameRuleStub;
 
 		$this->set->setRule($rule);
 
 		$this->assertEquals($rule, $this->set->getRule());
+	}
+
+	public function testValidate()
+	{
+		$age = 25;
+		$context = ['user' => ['age' => $age]];
+
+		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractModifier');
+
+		$modifier->shouldReceive('run')
+			->with($age)
+			->once()
+			->andReturn(true);
+
+		$rule = new NameRuleStub;
+		$rule->setModifier($modifier);
+
+		$this->set->setRule($rule);
+
+		$this->assertTrue(
+			$this->set->isValid($context)
+		);
 	}
 
 }

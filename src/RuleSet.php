@@ -12,12 +12,12 @@ class RuleSet
 {
 
 	/**
-	 * @var Rule
+	 * @var AbstractRule
 	 */
 	protected $rule;
 
 	/**
-	 * @return Rule
+	 * @return AbstractRule
 	 */
 	public function getRule()
 	{
@@ -25,11 +25,33 @@ class RuleSet
 	}
 
 	/**
-	 * @param Rule $rule
+	 * @param AbstractRule $rule
 	 */
-	public function setRule(Rule $rule)
+	public function setRule(AbstractRule $rule)
 	{
 		$this->rule = $rule;
+	}
+
+	/**
+	 * Returns true if the rule is valid for the given context
+	 *
+	 * @param mixed $context
+	 *
+	 * @return bool
+	 */
+	public function isValid($context)
+	{
+		return $this->rule->run($context);
+	}
+
+	/**
+	 * Applies the mutators for this rule to the target.
+	 *
+	 * @param mixed $target
+	 */
+	public function applyMutators($target)
+	{
+
 	}
 
 }

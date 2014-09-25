@@ -13,15 +13,8 @@ namespace Ve\LogicProcessor;
  *
  * @package Ve\LogicProcessor
  */
-class Rule
+abstract class AbstractRule
 {
-
-	/**
-	 * The entity property to compare against.
-	 *
-	 * @var string
-	 */
-	protected $entityProperty;
 
 	/**
 	 * Modifier used to test against
@@ -29,22 +22,6 @@ class Rule
 	 * @var AbstractModifier
 	 */
 	protected $modifier;
-
-	/**
-	 * @return string
-	 */
-	public function getEntityProperty()
-	{
-		return $this->entityProperty;
-	}
-
-	/**
-	 * @param string $entityProperty
-	 */
-	public function setEntityProperty($entityProperty)
-	{
-		$this->entityProperty = $entityProperty;
-	}
 
 	/**
 	 * @return AbstractModifier
@@ -65,11 +42,10 @@ class Rule
 	/**
 	 * Evaluates the rule
 	 *
+	 * @param mixed $context
+	 *
 	 * @return bool
 	 */
-	public function run($entityData)
-	{
-		// TODO: implement this
-	}
+	public abstract function run($context);
 
 }

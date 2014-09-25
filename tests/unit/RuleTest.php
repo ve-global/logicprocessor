@@ -15,13 +15,13 @@ class RuleTest extends Test
 {
 
 	/**
-	 * @var Rule
+	 * @var AbstractRule
 	 */
 	protected $rule;
 
 	protected function _before()
 	{
-		$this->rule = new Rule();
+		$this->rule = new NameRuleStub;
 	}
 
 	public function testGetAndSetModifier()
@@ -31,15 +31,6 @@ class RuleTest extends Test
 		$this->rule->setModifier($modifier);
 
 		$this->assertEquals($modifier, $this->rule->getModifier());
-	}
-
-	public function testGetAndSetProperty()
-	{
-		$property = 'entity.name';
-
-		$this->rule->setEntityProperty($property);
-
-		$this->assertEquals($property, $this->rule->getEntityProperty());
 	}
 
 }
