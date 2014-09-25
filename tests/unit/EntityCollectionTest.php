@@ -10,6 +10,7 @@ namespace Ve\LogicProcessor;
 
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
+use Mockery;
 
 class EntityCollectionTest extends Test
 {
@@ -73,6 +74,23 @@ class EntityCollectionTest extends Test
 	public function testGetInvalid()
 	{
 		$this->entityCollection->getEntity('not here');
+	}
+
+	public function testHasEntityProperty()
+	{
+		$this->entityCollection->add('test', 'Ve\LogicProcessor\EntityDefinitionInterfaceStub');
+
+		$this->assertTrue(
+			$this->entityCollection->hasEntityProperty('test.name')
+		);
+
+		$this->assertFalse(
+			$this->entityCollection->hasEntityProperty('test.invalid')
+		);
+
+		$this->assertFalse(
+			$this->entityCollection->hasEntityProperty('invalid.name')
+		);
 	}
 
 }

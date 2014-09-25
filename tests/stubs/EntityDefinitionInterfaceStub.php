@@ -5,6 +5,11 @@ namespace Ve\LogicProcessor;
 class EntityDefinitionInterfaceStub implements EntityDefinitionInterface
 {
 
+	protected $properties = [
+		'name' => 'string',
+		'id' => 'int',
+	];
+
 	/**
 	 * Should return true if the entity contains the given property.
 	 *
@@ -14,7 +19,7 @@ class EntityDefinitionInterfaceStub implements EntityDefinitionInterface
 	 */
 	public function hasProperty($name)
 	{
-		// TODO: Implement hasProperty() method.
+		return isset($this->properties[$name]);
 	}
 
 	/**
@@ -27,7 +32,7 @@ class EntityDefinitionInterfaceStub implements EntityDefinitionInterface
 	 */
 	public function getProperties()
 	{
-		// TODO: Implement getProperties() method.
+		return $this->properties;
 	}
 
 }

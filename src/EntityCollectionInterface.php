@@ -38,4 +38,14 @@ interface EntityCollectionInterface
 	 */
 	public function getEntity($name);
 
+
+	/**
+	 * Should return true if the given name represents a valid entity and a valid property.
+	 *
+	 * @param string $name Should be in the format "entity_name.property"
+	 *
+	 * @return bool
+	 */
+	public function hasEntityProperty($name);
+
 }

@@ -77,4 +77,26 @@ class EntityCollection implements EntityCollectionInterface
 		return $class;
 	}
 
+	/**
+	 * @param string $name
+	 *
+	 * @return bool
+	 */
+	public function hasEntityProperty($name)
+	{
+		$nameParts = explode('.', $name);
+
+		$entityName = reset($nameParts);
+		$propertyName = substr($name, strlen($entityName)+1);
+
+		if ( ! $this->hasEntity($entityName))
+		{
+			return false;
+		}
+
+		$entity = $this->getEntity($entityName);
+
+		return $entity->hasProperty($propertyName);
+	}
+
 }

@@ -12,7 +12,8 @@
 		"php": ">=5.4"
 	},
 	"require-dev": {
-		"codeception/codeception": "~2.0"
+		"codeception/codeception": "~2.0",
+		"codeception/mockery-module": "dev-master"
 	},
 	"autoload": {
 		"psr-4": { "Ve\\LogicProcessor\\": "src/" }
