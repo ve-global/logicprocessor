@@ -8,6 +8,8 @@
 
 namespace Ve\LogicProcessor;
 
+use InvalidArgumentException;
+
 /**
  * Responsible for constructing rule sets.
  *
@@ -17,13 +19,50 @@ class RuleFactory
 {
 
 	/**
-	 * @var EntityCollectionInterface
+	 * Contains a list of known rule classes indexed by identifier.
+	 *
+	 * @var string[]
 	 */
-	protected $entityCollection;
+	protected $rules = [];
 
-	public function __construct(EntityCollectionInterface $entityCollection)
+	/**
+	 * Adds a rule to the library.
+	 *
+	 * @param string $name
+	 * @param string $class
+	 */
+	public function addRule($name, $class)
 	{
-		$this->entityCollection = $entityCollection;
+		$this->rules[$name] = $class;
+	}
+
+	/**
+	 * Checks if the given rule is known about.
+	 *
+	 * @param string $name
+	 *
+	 * @return bool
+	 */
+	public function hasRule($name)
+	{
+		return isset($this->rules[$name]);
+	}
+
+	/**
+	 * Gets an instance of the given rule.
+	 *
+	 * @param string $name
+	 *
+	 * @return AbstractRule
+	 */
+	public function getRuleInstance($name)
+	{
+		if ( ! $this->hasRule($name))
+		{
+			throw new InvalidArgumentException($name . ' is not a known rule.');
+		}
+
+		return new $this->rules[$name];
 	}
 
 }
