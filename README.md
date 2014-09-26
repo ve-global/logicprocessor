@@ -7,58 +7,16 @@
 
 Library to process logical rules and apply outcomes based on the result of those rules.
 
-## Proposed data structure
- ```JSON
-{
-    "i18n": {
-        "en": {
-            "name": "My awesome rules"
-        }
-    },
-    "rule_sets": [
-        {
-        	"identifier": "Some internal identifier to identify this set of rules",
-            "rules": [
-                {
-                    "name": "rule_name",
-                    "modifier": "<=",
-                    "value": 123
-                },
-                {
-                    "name": "other_rule",
-                    "modifier": "!=",
-                    "value": "foobar"
-                }
-            ],
-            "result": [
-                {
-                    "name": "promotion",
-                    "modifier": "%",
-                    "value": 123
-                }
-            ]
-        },
-        {
-        	"identifier": "set_123",
-            "rules": [
-                {
-                    "name": "basket.total",
-                    "modifier": ">",
-                    "value": 100
-                }
-            ],
-            "result": [
-                {
-                    "name": "order.total",
-                    "modifier": "fixed_reduction",
-                    "value": 10
-                },
-                {
-                    "name": "free_product",
-                    "value": 10
-                }
-            ]
-        }
-    ]
-}
-```
+The package consists of `Rule`s, `Modifier`s, `RuleSet`s and `Mutator`s.
+
+A `Rule` contains the logic to extract a value from a context and contain a `Modifier`.
+A `Modifier` represents a logical operation that results in a boolean value.
+`Rule`s and `Modifier`s work together to perform assertions on sets of data.
+
+Multiple rules can be grouped to form a `RuleSet` to create more complex logic.
+
+`RuleSet`s can also contain one or more `Mutator`s that will modify a target entity should the rules evaluate to true.
+
+## Data Structure
+
+https://github.com/ve-interactive/logicprocessor/wiki/JSON-data-structure
