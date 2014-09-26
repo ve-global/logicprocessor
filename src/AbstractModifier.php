@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Ve Kraken Development Team
+ * Ve Labs, Team Kraken
  * @license MIT
  * @copyright 2014 Ve Interactive Ltd.
  * @link http://veinteractive.com
