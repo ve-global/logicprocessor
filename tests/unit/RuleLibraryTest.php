@@ -11,17 +11,17 @@ namespace Ve\LogicProcessor;
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
 
-class RuleFactoryTest extends Test
+class RuleLibraryTest extends Test
 {
 
 	/**
-	 * @var RuleFactory
+	 * @var RuleLibrary
 	 */
 	protected $library;
 
 	protected function _before()
 	{
-		$this->library = new RuleFactory;
+		$this->library = new RuleLibrary;
 	}
 
 	public function testSetAndHas()

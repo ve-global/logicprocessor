@@ -15,7 +15,7 @@ use InvalidArgumentException;
  *
  * @package Ve\LogicProcessor
  */
-class RuleFactory
+class RuleLibrary
 {
 
 	/**
