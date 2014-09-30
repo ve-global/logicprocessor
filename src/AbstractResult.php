@@ -13,7 +13,7 @@ namespace Ve\LogicProcessor;
  *
  * @package Ve\LogicProcessor
  */
-abstract class AbstractMutator
+abstract class AbstractResult
 {
 
 	public abstract function mutate($target);
