@@ -17,7 +17,7 @@ class RuleSet
 	protected $rule;
 
 	/**
-	 * @var AbstractMutator[]
+	 * @var AbstractResult[]
 	 */
 	protected $mutators = [];
 
@@ -40,9 +40,9 @@ class RuleSet
 	/**
 	 * Adds a mutator that will be called as a result of the RuleSet being valid.
 	 *
-	 * @param AbstractMutator $mutator
+	 * @param AbstractResult $mutator
 	 */
-	public function addMutator(AbstractMutator $mutator)
+	public function addMutator(AbstractResult $mutator)
 	{
 		$this->mutators[] = $mutator;
 	}

@@ -60,7 +60,7 @@ class RuleSetTest extends Test
 	{
 		$target = new stdClass;
 
-		$mutator = Mockery::mock('Ve\LogicProcessor\AbstractMutator');
+		$mutator = Mockery::mock('Ve\LogicProcessor\AbstractResult');
 		$mutator->shouldReceive('mutate')
 			->with($target)
 			->once();

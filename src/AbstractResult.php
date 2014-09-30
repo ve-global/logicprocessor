@@ -16,6 +16,28 @@ namespace Ve\LogicProcessor;
 abstract class AbstractResult
 {
 
+	/**
+	 * A value that the result can check things against
+	 * @var mixed
+	 */
+	protected $value;
+
 	public abstract function mutate($target);
+
+	/**
+	 * @return mixed
+	 */
+	public function getValue()
+	{
+		return $this->value;
+	}
+
+	/**
+	 * @param mixed $value
+	 */
+	public function setValue($value)
+	{
+		$this->value = $value;
+	}
 
 }

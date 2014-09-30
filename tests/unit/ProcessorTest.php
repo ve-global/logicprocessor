@@ -77,4 +77,53 @@ class ProcessorTest extends Test
 		return [$validSet, $invalidSet];
 	}
 
+	/**
+	 * Performs an actual logical check without mocks as a form of integration test.
+	 */
+	protected function testFullRuleRun()
+	{
+		$set = new RuleSet();
+
+		// Set up and add a rule
+		$rule = new HasProdRule();
+		$modifier = new Modifier\Equal;
+		$modifier->setTargetValue(10);
+		$rule->setModifier($modifier);
+		$set->setRule($rule);
+
+		// Set up and add a result
+		$result = new OrderDiscountResult;
+		$result->setValue(10.00);
+		$set->addMutator($result);
+
+		$context = [
+			'products' => [
+				['id' => 1, 'qty' => 10, 'price' => 10.00,],
+			],
+		];
+
+		$target = new stdClass;
+		$target->total = 50.00;
+
+		// Check the rule can be valid
+		$this->processor->addRuleSet($rule);
+		$this->processor->run($context, $target);
+
+		$this->assertEquals(
+			10.00,
+			$target->total
+		);
+
+		// Check the rule can be false
+		$target->total = 50.00;
+		$context['products'][0]['qty'] = 5;
+
+		$this->processor->run($context, $target);
+
+		$this->assertEquals(
+			50.00,
+			$target->total
+		);
+	}
+
 }
