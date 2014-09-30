@@ -47,11 +47,11 @@ class ProcessorTest extends Test
 
 		list($validSet, $invalidSet) = $this->addRuleSetMocks($context);
 
-		$validSet->shouldReceive('applyMutators')
+		$validSet->shouldReceive('applyResults')
 			->with($target)
 			->once();
 
-		$invalidSet->shouldReceive('applyMutators')
+		$invalidSet->shouldReceive('applyResults')
 			->never();
 
 		$this->processor->addRuleSet($validSet);
@@ -94,7 +94,7 @@ class ProcessorTest extends Test
 		// Set up and add a result
 		$result = new OrderDiscountResult;
 		$result->setValue(10.00);
-		$set->addMutator($result);
+		$set->addResult($result);
 
 		$context = [
 			'products' => [

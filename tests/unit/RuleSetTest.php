@@ -65,8 +65,8 @@ class RuleSetTest extends Test
 			->with($target)
 			->once();
 
-		$this->set->addMutator($mutator);
-		$this->set->applyMutators($target);
+		$this->set->addResult($mutator);
+		$this->set->applyResults($target);
 	}
 
 }

@@ -38,11 +38,11 @@ class RuleSet
 	}
 
 	/**
-	 * Adds a mutator that will be called as a result of the RuleSet being valid.
+	 * Adds a result that will be called as a result of the RuleSet being valid.
 	 *
 	 * @param AbstractResult $mutator
 	 */
-	public function addMutator(AbstractResult $mutator)
+	public function addResult(AbstractResult $mutator)
 	{
 		$this->mutators[] = $mutator;
 	}
@@ -60,11 +60,11 @@ class RuleSet
 	}
 
 	/**
-	 * Applies the mutators for this rule to the target.
+	 * Applies the results for this rule to the target.
 	 *
 	 * @param mixed $target
 	 */
-	public function applyMutators($target)
+	public function applyResults($target)
 	{
 		foreach ($this->mutators as $mutator)
 		{

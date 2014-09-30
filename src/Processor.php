@@ -48,7 +48,7 @@ class Processor
 		// Loop over each valid set and apply its mutator
 		foreach ($validSets as $set)
 		{
-			$set->applyMutators($target);
+			$set->applyResults($target);
 		}
 	}
 
