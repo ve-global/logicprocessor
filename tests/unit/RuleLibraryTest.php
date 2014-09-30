@@ -30,13 +30,13 @@ class RuleLibraryTest extends Test
 		$class = 'stdClass';
 
 		$this->assertFalse(
-			$this->library->hasRule($name)
+			$this->library->has($name)
 		);
 
-		$this->library->addRule($name, $class);
+		$this->library->add($name, $class);
 
 		$this->assertTrue(
-			$this->library->hasRule($name)
+			$this->library->has($name)
 		);
 	}
 
@@ -45,11 +45,11 @@ class RuleLibraryTest extends Test
 		$name = 'foobar';
 		$class = 'stdClass';
 
-		$this->library->addRule($name, $class);
+		$this->library->add($name, $class);
 
 		$this->assertInstanceOf(
 			$class,
-			$this->library->getRuleInstance($name)
+			$this->library->getInstance($name)
 		);
 	}
 
@@ -58,7 +58,7 @@ class RuleLibraryTest extends Test
 	 */
 	public function testGetInvalidInstance()
 	{
-		$this->library->getRuleInstance('not here');
+		$this->library->getInstance('not here');
 	}
 
 }

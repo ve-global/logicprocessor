@@ -8,17 +8,19 @@
 
 namespace Ve\LogicProcessor;
 
+use InvalidArgumentException;
+
 /**
  * Keeps track of modifiers that can be applied to properties.
  *
  * @package Ve\LogicProcessor
  */
-class ModifierLibrary
+class ModifierLibrary extends AbstractLibrary
 {
 
 	protected $baseNamespace = 'Ve\LogicProcessor\Modifier\\';
 
-	protected $classNames = [];
+	protected $notFoundError = ' is not a known modifier.';
 
 	/**
 	 * Gets an instance of the given modifier.
@@ -35,18 +37,7 @@ class ModifierLibrary
 	}
 
 	/**
-	 * Adds a custom modifier.
-	 *
-	 * @param string $name
-	 * @param string $class
-	 */
-	public function addModifier($name, $class)
-	{
-		$this->classNames[$name] = $class;
-	}
-
-	/**
-	 * Given a name will return the FQNS of the modifier.
+	 * Given a name will return the FQCN of the modifier.
 	 *
 	 * @param string $name
 	 *
@@ -54,11 +45,19 @@ class ModifierLibrary
 	 */
 	protected function getModifierClassName($name)
 	{
-		if (isset($this->classNames[$name]))
+		if (isset($this->items[$name]))
 		{
-			return $this->classNames[$name];
+			return $this->items[$name];
 		}
-		return $this->baseNamespace . ucfirst($name);
+
+		$className = $this->baseNamespace . ucfirst($name);
+
+		if (! class_exists($className))
+		{
+			throw new InvalidArgumentException($name . $this->notFoundError);
+		}
+
+		return $className;
 	}
 
 }

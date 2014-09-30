@@ -9,6 +9,7 @@
 namespace Ve\LogicProcessor;
 
 use Codeception\TestCase\Test;
+use InvalidArgumentException;
 
 class ModifierLibraryTest extends Test
 {
@@ -33,12 +34,21 @@ class ModifierLibraryTest extends Test
 		);
 	}
 
+	/**
+	 * @expectedException InvalidArgumentException
+	 * @expectedExceptionMessage foobar is not a known modifier.
+	 */
+	public function testGetInvalidInstance()
+	{
+		$this->library->getInstance('foobar');
+	}
+
 	public function testGetCustomInstance()
 	{
 		$name = 'foobar';
 		$class = 'stdClass';
 
-		$this->library->addModifier($name, $class);
+		$this->library->add($name, $class);
 
 		$modifier = $this->library->getInstance($name);
 
