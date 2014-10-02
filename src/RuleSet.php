@@ -17,6 +17,12 @@ class RuleSet
 	protected $rule;
 
 	/**
+	 * Something that can be used to identify this set.
+	 * @var string
+	 */
+	protected $identifier;
+
+	/**
 	 * @var AbstractResult[]
 	 */
 	protected $mutators = [];
@@ -70,6 +76,22 @@ class RuleSet
 		{
 			$mutator->mutate($target);
 		}
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIdentifier()
+	{
+		return $this->identifier;
+	}
+
+	/**
+	 * @param string $identifier
+	 */
+	public function setIdentifier($identifier)
+	{
+		$this->identifier = $identifier;
 	}
 
 }

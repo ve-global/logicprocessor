@@ -17,6 +17,7 @@ use Ve\LogicProcessor\AbstractRule;
  */
 abstract class AbstractLogicRule extends AbstractRule
 {
+
 	/**
 	 * @var AbstractRule
 	 */
@@ -42,4 +43,21 @@ abstract class AbstractLogicRule extends AbstractRule
 	{
 		$this->left = $left;
 	}
+
+	/**
+	 * @return AbstractRule
+	 */
+	public function getRight()
+	{
+		return $this->right;
+	}
+
+	/**
+	 * @return AbstractRule
+	 */
+	public function getLeft()
+	{
+		return $this->left;
+	}
+
 }
