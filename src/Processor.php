@@ -41,7 +41,7 @@ class Processor
 	 * @param mixed $context
 	 * @param mixed $target
 	 */
-	public function run($context, $target)
+	public function run($context, &$target)
 	{
 		$validSets = $this->getValidRuleSets($context);
 

@@ -23,6 +23,11 @@ abstract class AbstractRule
 	 */
 	protected $modifier;
 
+	/***
+	 * @var mixed
+	 */
+	protected $targetValue;
+
 	/**
 	 * @return AbstractModifier
 	 */
@@ -47,5 +52,21 @@ abstract class AbstractRule
 	 * @return bool
 	 */
 	public abstract function run($context);
+
+	/**
+	 * @return mixed
+	 */
+	public function getTargetValue()
+	{
+		return $this->targetValue;
+	}
+
+	/**
+	 * @param mixed $targetValue
+	 */
+	public function setTargetValue($targetValue)
+	{
+		$this->targetValue = $targetValue;
+	}
 
 }

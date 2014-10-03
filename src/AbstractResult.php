@@ -22,7 +22,12 @@ abstract class AbstractResult
 	 */
 	protected $value;
 
-	public abstract function mutate($target);
+	/**
+	 * @var AbstractModifier
+	 */
+	protected $modifier;
+
+	public abstract function mutate(&$target);
 
 	/**
 	 * @return mixed
@@ -38,6 +43,22 @@ abstract class AbstractResult
 	public function setValue($value)
 	{
 		$this->value = $value;
+	}
+
+	/**
+	 * @return AbstractModifier
+	 */
+	public function getModifier()
+	{
+		return $this->modifier;
+	}
+
+	/**
+	 * @param AbstractModifier $modifier
+	 */
+	public function setModifier($modifier)
+	{
+		$this->modifier = $modifier;
 	}
 
 }

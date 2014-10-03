@@ -70,7 +70,7 @@ class RuleSet
 	 *
 	 * @param mixed $target
 	 */
-	public function applyResults($target)
+	public function applyResults(&$target)
 	{
 		foreach ($this->mutators as $mutator)
 		{
