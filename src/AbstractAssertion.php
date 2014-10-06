@@ -13,7 +13,7 @@ namespace Ve\LogicProcessor;
  *
  * @package Ve\LogicProcessor
  */
-abstract class AbstractModifier
+abstract class AbstractAssertion
 {
 
 	/**

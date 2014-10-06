@@ -6,11 +6,11 @@
  * @link http://veinteractive.com
  */
 
-namespace Ve\LogicProcessor\Modifier;
+namespace Ve\LogicProcessor\Assertion;
 
-use Ve\LogicProcessor\AbstractModifier;
+use Ve\LogicProcessor\AbstractAssertion;
 
-class Equal extends AbstractModifier
+class Equal extends AbstractAssertion
 {
 
 	/**

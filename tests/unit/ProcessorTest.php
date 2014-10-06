@@ -88,7 +88,7 @@ class ProcessorTest extends Test
 		$rule = new HasProdRule();
 		$modifier = new Modifier\Equal;
 		$modifier->setTargetValue(10);
-		$rule->setModifier($modifier);
+		$rule->setAssertion($modifier);
 		$set->setRule($rule);
 
 		// Set up and add a result

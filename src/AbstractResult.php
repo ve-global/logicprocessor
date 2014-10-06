@@ -23,7 +23,7 @@ abstract class AbstractResult
 	protected $value;
 
 	/**
-	 * @var AbstractModifier
+	 * @var AbstractAssertion
 	 */
 	protected $modifier;
 
@@ -46,7 +46,7 @@ abstract class AbstractResult
 	}
 
 	/**
-	 * @return AbstractModifier
+	 * @return AbstractAssertion
 	 */
 	public function getModifier()
 	{
@@ -54,7 +54,7 @@ abstract class AbstractResult
 	}
 
 	/**
-	 * @param AbstractModifier $modifier
+	 * @param AbstractAssertion $modifier
 	 */
 	public function setModifier($modifier)
 	{

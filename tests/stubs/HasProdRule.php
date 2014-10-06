@@ -16,7 +16,7 @@ class HasProdRule extends AbstractRule
 	{
 		foreach ($context['products'] as $product)
 		{
-			$result = $this->getModifier()->run($product['qty']);
+			$result = $this->getAssertion()->run($product['qty']);
 
 			if ($result)
 			{

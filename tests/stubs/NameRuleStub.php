@@ -16,6 +16,6 @@ class NameRuleStub extends AbstractRule
 	 */
 	public function run($context)
 	{
-		return isset($context['user']['age']) && $this->modifier->run($context['user']['age']);
+		return isset($context['user']['age']) && $this->assertion->run($context['user']['age']);
 	}
 }

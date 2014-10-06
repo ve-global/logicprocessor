@@ -8,14 +8,14 @@
 
 namespace Ve\LogicProcessor\Modifier;
 
-use Ve\LogicProcessor\AbstractModifier;
+use Ve\LogicProcessor\AbstractAssertion;
 
 /**
  * Returns the percentage of the percentage of the $value in run()
  *
  * @package Ve\LogicProcessor\Modifier
  */
-class Percent extends AbstractModifier
+class Percent extends AbstractAssertion
 {
 
 	/**

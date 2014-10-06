@@ -15,19 +15,19 @@ use InvalidArgumentException;
  *
  * @package Ve\LogicProcessor
  */
-class ModifierLibrary extends AbstractLibrary
+class AssertionLibrary extends AbstractLibrary
 {
 
-	protected $baseNamespace = 'Ve\LogicProcessor\Modifier\\';
+	protected $baseNamespace = 'Ve\LogicProcessor\Assertion\\';
 
-	protected $notFoundError = ' is not a known modifier.';
+	protected $notFoundError = ' is not a known assertion.';
 
 	/**
 	 * Gets an instance of the given modifier.
 	 *
 	 * @param string $name
 	 *
-	 * @return AbstractModifier
+	 * @return AbstractAssertion
 	 */
 	public function getInstance($name)
 	{

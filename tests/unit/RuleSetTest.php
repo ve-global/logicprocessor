@@ -47,7 +47,7 @@ class RuleSetTest extends Test
 			->andReturn(true);
 
 		$rule = new NameRuleStub;
-		$rule->setModifier($modifier);
+		$rule->setAssertion($modifier);
 
 		$this->set->setRule($rule);
 

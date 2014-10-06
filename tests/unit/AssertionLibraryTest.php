@@ -11,17 +11,17 @@ namespace Ve\LogicProcessor;
 use Codeception\TestCase\Test;
 use InvalidArgumentException;
 
-class ModifierLibraryTest extends Test
+class AssertionLibraryTest extends Test
 {
 
 	/**
-	 * @var ModifierLibrary
+	 * @var AssertionLibrary
 	 */
 	protected $library;
 
 	protected function _before()
 	{
-		$this->library = new ModifierLibrary;
+		$this->library = new AssertionLibrary;
 	}
 
 	public function testGetInstance()
@@ -29,14 +29,14 @@ class ModifierLibraryTest extends Test
 		$modifier = $this->library->getInstance('equal');
 
 		$this->assertInstanceOf(
-			'Ve\LogicProcessor\Modifier\Equal',
+			'Ve\LogicProcessor\Assertion\Equal',
 			$modifier
 		);
 	}
 
 	/**
 	 * @expectedException InvalidArgumentException
-	 * @expectedExceptionMessage foobar is not a known modifier.
+	 * @expectedExceptionMessage foobar is not a known assertion.
 	 */
 	public function testGetInvalidInstance()
 	{

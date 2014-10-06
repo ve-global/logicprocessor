@@ -24,11 +24,11 @@ class Builder
 	protected $ruleLibrary;
 
 	/**
-	 * @var ModifierLibrary
+	 * @var AssertionLibrary
 	 */
 	protected $modifierLibrary;
 
-	public function __construct(RuleLibrary $ruleLibrary, ModifierLibrary $modifierLibrary)
+	public function __construct(RuleLibrary $ruleLibrary, AssertionLibrary $modifierLibrary)
 	{
 		$this->ruleLibrary = $ruleLibrary;
 		$this->modifierLibrary = $modifierLibrary;
@@ -84,7 +84,7 @@ class Builder
 	/**
 	 * Builds a rule.
 	 *
-	 * Expects an array with a key called "name". If "modifier" is set the $data array will be passed to `buildModifier`
+	 * Expects an array with a key called "name". If "assertion" is set the $data array will be passed to `buildAssertion`
 	 * and the resulting modifier will be added to the rule.
 	 *
 	 * @param array $data
@@ -103,10 +103,10 @@ class Builder
 			$this->populateLogicRule($rule, $data);
 		}
 
-		// Build the modifier and set its value before adding it to the rule
-		if (isset($data['modifier']))
+		// Build the assertion and set its value before adding it to the rule
+		if (isset($data['assertion']))
 		{
-			$rule->setModifier($this->buildModifier($data));
+			$rule->setAssertion($this->buildAssertion($data));
 		}
 
 		return $rule;
@@ -139,11 +139,11 @@ class Builder
 	 *
 	 * @param array $data
 	 *
-	 * @return AbstractModifier
+	 * @return AbstractAssertion
 	 */
-	public function buildModifier($data)
+	public function buildAssertion($data)
 	{
-		$modifier = $this->modifierLibrary->getInstance($data['modifier']);
+		$modifier = $this->modifierLibrary->getInstance($data['assertion']);
 
 		if (isset($data['value']))
 		{

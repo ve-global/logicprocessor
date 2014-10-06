@@ -19,29 +19,24 @@ abstract class AbstractRule
 	/**
 	 * Modifier used to test against
 	 *
-	 * @var AbstractModifier
+	 * @var AbstractAssertion
 	 */
-	protected $modifier;
-
-	/***
-	 * @var mixed
-	 */
-	protected $targetValue;
+	protected $assertion;
 
 	/**
-	 * @return AbstractModifier
+	 * @return AbstractAssertion
 	 */
-	public function getModifier()
+	public function getAssertion()
 	{
-		return $this->modifier;
+		return $this->assertion;
 	}
 
 	/**
-	 * @param AbstractModifier $modifier
+	 * @param AbstractAssertion $modifier
 	 */
-	public function setModifier($modifier)
+	public function setAssertion($modifier)
 	{
-		$this->modifier = $modifier;
+		$this->assertion = $modifier;
 	}
 
 	/**
@@ -52,21 +47,5 @@ abstract class AbstractRule
 	 * @return bool
 	 */
 	public abstract function run($context);
-
-	/**
-	 * @return mixed
-	 */
-	public function getTargetValue()
-	{
-		return $this->targetValue;
-	}
-
-	/**
-	 * @param mixed $targetValue
-	 */
-	public function setTargetValue($targetValue)
-	{
-		$this->targetValue = $targetValue;
-	}
 
 }

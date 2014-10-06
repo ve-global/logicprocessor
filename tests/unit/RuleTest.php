@@ -28,9 +28,9 @@ class RuleTest extends Test
 	{
 		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractModifier');
 
-		$this->rule->setModifier($modifier);
+		$this->rule->setAssertion($modifier);
 
-		$this->assertEquals($modifier, $this->rule->getModifier());
+		$this->assertEquals($modifier, $this->rule->getAssertion());
 	}
 
 }

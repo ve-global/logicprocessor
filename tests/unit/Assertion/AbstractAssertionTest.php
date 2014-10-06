@@ -9,9 +9,9 @@
 namespace Ve\LogicProcessor\Modifier;
 
 use Codeception\TestCase\Test;
-use Ve\LogicProcessor\AbstractModifier;
+use Ve\LogicProcessor\AbstractAssertion;
 
-abstract class AbstractModifierTest extends Test
+abstract class AbstractAssertionTest extends Test
 {
 
 	/**
@@ -21,7 +21,7 @@ abstract class AbstractModifierTest extends Test
 	protected $className = '';
 
 	/**
-	 * @var AbstractModifier
+	 * @var AbstractAssertion
 	 */
 	protected $instance;
 

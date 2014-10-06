@@ -10,10 +10,10 @@ namespace Ve\LogicProcessor\Modifier;
 
 use Codeception\TestCase\Test;
 
-class EqualTest extends AbstractModifierTest
+class EqualTest extends AbstractAssertionTest
 {
 
-	protected $className = 'Ve\LogicProcessor\Modifier\Equal';
+	protected $className = 'Ve\LogicProcessor\Assertion\Equal';
 
 	public function testData()
 	{

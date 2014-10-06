@@ -26,14 +26,14 @@ class BuilderTest extends Test
 	protected $ruleLibrary;
 
 	/**
-	 * @var ModifierLibrary
+	 * @var AssertionLibrary
 	 */
 	protected $modifierLibrary;
 
 	protected function _before()
 	{
 		$this->ruleLibrary = new RuleLibrary;
-		$this->modifierLibrary = new ModifierLibrary;
+		$this->modifierLibrary = new AssertionLibrary;
 
 		$this->builder = new Builder($this->ruleLibrary, $this->modifierLibrary);
 	}
@@ -44,7 +44,7 @@ class BuilderTest extends Test
 
 		$data = [
 			'name' => $ruleName,
-			'modifier' => 'equal',
+			'assertion' => 'equal',
 			'value' => 123,
 		];
 
@@ -58,13 +58,13 @@ class BuilderTest extends Test
 		);
 
 		$this->assertInstanceOf(
-			'Ve\LogicProcessor\Modifier\Equal',
-			$rule->getModifier()
+			'Ve\LogicProcessor\Assertion\Equal',
+			$rule->getAssertion()
 		);
 
 		$this->assertEquals(
 			123,
-			$rule->getModifier()->getTargetValue()
+			$rule->getAssertion()->getTargetValue()
 		);
 
 	}
