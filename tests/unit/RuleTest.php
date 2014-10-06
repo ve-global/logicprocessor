@@ -26,7 +26,7 @@ class RuleTest extends Test
 
 	public function testGetAndSetModifier()
 	{
-		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractModifier');
+		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractAssertion');
 
 		$this->rule->setAssertion($modifier);
 

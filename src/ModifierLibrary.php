@@ -13,9 +13,11 @@ namespace Ve\LogicProcessor;
  *
  * @package Ve\LogicProcessor
  */
-class MutatorLibrary extends AbstractLibrary
+class ModifierLibrary extends AbstractFindingLibrary
 {
 
-	protected $notFoundError = ' is not a known mutator.';
+	protected $baseNamespace = 'Ve\LogicProcessor\Modifier\\';
+
+	protected $notFoundError = ' is not a known modifier.';
 
 }

@@ -25,7 +25,7 @@ class RuleSet
 	/**
 	 * @var AbstractResult[]
 	 */
-	protected $mutators = [];
+	protected $results = [];
 
 	/**
 	 * @return AbstractRule
@@ -46,11 +46,11 @@ class RuleSet
 	/**
 	 * Adds a result that will be called as a result of the RuleSet being valid.
 	 *
-	 * @param AbstractResult $mutator
+	 * @param AbstractResult $result
 	 */
-	public function addResult(AbstractResult $mutator)
+	public function addResult(AbstractResult $result)
 	{
-		$this->mutators[] = $mutator;
+		$this->results[] = $result;
 	}
 
 	/**
@@ -72,7 +72,7 @@ class RuleSet
 	 */
 	public function applyResults(&$target)
 	{
-		foreach ($this->mutators as $mutator)
+		foreach ($this->results as $mutator)
 		{
 			$mutator->mutate($target);
 		}

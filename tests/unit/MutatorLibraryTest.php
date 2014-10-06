@@ -15,18 +15,18 @@ class MutatorLibraryTest extends Test
 {
 
 	/**
-	 * @var MutatorLibrary
+	 * @var ModifierLibrary
 	 */
 	protected $library;
 
 	protected function _before()
 	{
-		$this->library = new MutatorLibrary;
+		$this->library = new ModifierLibrary;
 	}
 
 	public function testAddAndHas()
 	{
-		$name = 'somemutator';
+		$name = 'somemodifier';
 		$class = 'stdClass';
 
 		$this->assertFalse(

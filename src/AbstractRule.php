@@ -34,7 +34,7 @@ abstract class AbstractRule
 	/**
 	 * @param AbstractAssertion $modifier
 	 */
-	public function setAssertion($modifier)
+	public function setAssertion(AbstractAssertion $modifier)
 	{
 		$this->assertion = $modifier;
 	}

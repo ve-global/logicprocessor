@@ -39,7 +39,7 @@ class RuleSetTest extends Test
 		$age = 25;
 		$context = ['user' => ['age' => $age]];
 
-		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractModifier');
+		$modifier = Mockery::mock('Ve\LogicProcessor\AbstractAssertion');
 
 		$modifier->shouldReceive('run')
 			->with($age)

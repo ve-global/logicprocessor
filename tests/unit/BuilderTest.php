@@ -28,14 +28,31 @@ class BuilderTest extends Test
 	/**
 	 * @var AssertionLibrary
 	 */
+	protected $assertionLibrary;
+
+	/**
+	 * @var ResultLibrary
+	 */
+	protected $resultLibrary;
+
+	/**
+	 * @var ModifierLibrary
+	 */
 	protected $modifierLibrary;
 
 	protected function _before()
 	{
 		$this->ruleLibrary = new RuleLibrary;
-		$this->modifierLibrary = new AssertionLibrary;
+		$this->assertionLibrary = new AssertionLibrary;
+		$this->resultLibrary = new ResultLibrary;
+		$this->modifierLibrary = new ModifierLibrary();
 
-		$this->builder = new Builder($this->ruleLibrary, $this->modifierLibrary);
+		$this->builder = new Builder(
+			$this->ruleLibrary,
+			$this->assertionLibrary,
+			$this->resultLibrary,
+			$this->modifierLibrary
+		);
 	}
 
 	public function testBuildRule()
@@ -104,6 +121,42 @@ class BuilderTest extends Test
 		);
 	}
 
+	public function testBuildResult()
+	{
+		$name = 'test';
+		$class = 'Ve\LogicProcessor\OrderDiscountResult';
+		$value = 'some value';
+
+		$this->resultLibrary->add($name, $class);
+
+		$result = $this->builder->buildResult([
+				'name' => $name,
+				'value' => $value,
+				'modifier' => 'percent',
+				'target' => 25,
+			]);
+
+		$this->assertInstanceOf(
+			$class,
+			$result
+		);
+
+		$this->assertEquals(
+			$value,
+			$result->getValue()
+		);
+
+		$this->assertInstanceOf(
+			'Ve\LogicProcessor\Modifier\Percent',
+			$result->getModifier()
+		);
+
+		$this->assertEquals(
+			25,
+			$result->getModifier()->getTargetValue()
+		);
+	}
+
 	public function testBuildSet()
 	{
 		$identifier = 'foobar';
@@ -128,5 +181,4 @@ class BuilderTest extends Test
 			$set->getIdentifier()
 		);
 	}
-
 }

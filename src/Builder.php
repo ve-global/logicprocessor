@@ -26,11 +26,28 @@ class Builder
 	/**
 	 * @var AssertionLibrary
 	 */
+	protected $assertionLibrary;
+
+	/**
+	 * @var ResultLibrary
+	 */
+	protected $resultLibrary;
+
+	/**
+	 * @var ModifierLibrary
+	 */
 	protected $modifierLibrary;
 
-	public function __construct(RuleLibrary $ruleLibrary, AssertionLibrary $modifierLibrary)
+	public function __construct(
+		RuleLibrary $ruleLibrary,
+		AssertionLibrary $assertionLibrary,
+		ResultLibrary $resultLibrary,
+		ModifierLibrary $modifierLibrary
+	)
 	{
 		$this->ruleLibrary = $ruleLibrary;
+		$this->assertionLibrary = $assertionLibrary;
+		$this->resultLibrary = $resultLibrary;
 		$this->modifierLibrary = $modifierLibrary;
 	}
 
@@ -61,6 +78,13 @@ class Builder
 		return $processor;
 	}
 
+	/**
+	 * Builds a full rule set with a rule and results.
+	 *
+	 * @param array $data
+	 *
+	 * @return RuleSet
+	 */
 	public function buildRuleSet($data)
 	{
 		$ruleSet = new RuleSet;
@@ -76,7 +100,14 @@ class Builder
 			$ruleSet->setRule($this->buildRule($data['rule']));
 		}
 
-		// TODO: Loop over each result and build that too
+		// Loop over each result and build that too
+		if (isset($data['result']))
+		{
+			foreach ($data['result'] as $result)
+			{
+				$ruleSet->addResult($this->buildResult($result));
+			}
+		}
 
 		return $ruleSet;
 	}
@@ -134,7 +165,7 @@ class Builder
 	/**
 	 * Builds a modifier.
 	 *
-	 * Expects an array with a "modifier" key with the name of the modifier and an optional "value" that will be passed
+	 * Expects an array with a "assertion" key with the name of the modifier and an optional "value" that will be passed
 	 * as the modifier target value if set.
 	 *
 	 * @param array $data
@@ -143,7 +174,7 @@ class Builder
 	 */
 	public function buildAssertion($data)
 	{
-		$modifier = $this->modifierLibrary->getInstance($data['assertion']);
+		$modifier = $this->assertionLibrary->getInstance($data['assertion']);
 
 		if (isset($data['value']))
 		{
@@ -153,9 +184,49 @@ class Builder
 		return $modifier;
 	}
 
+	/**
+	 * Builds a result, expects a key called "name" to exist in the $data array that represents a known result.
+	 *
+	 * @param array $data
+	 *
+	 * @return AbstractResult
+	 */
 	public function buildResult($data)
 	{
 		// Get the name and try to create an instance from the library
+		/** @var AbstractResult $result */
+		$result = $this->resultLibrary->getInstance($data['name']);
+
+		if (isset($data['value']))
+		{
+			$result->setValue($data['value']);
+		}
+
+		if (isset($data['modifier']))
+		{
+			$result->setModifier($this->buildModifier($data));
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Creates a rule modifier. Expects a key called "modifier" to exist in the $data array.
+	 *
+	 * @param array $data
+	 *
+	 * @return AbstractModifier
+	 */
+	public function buildModifier($data)
+	{
+		$modifier = $this->modifierLibrary->getInstance($data['modifier']);
+
+		if (isset($data['target']))
+		{
+			$modifier->setTargetValue($data['target']);
+		}
+
+		return $modifier;
 	}
 
 }

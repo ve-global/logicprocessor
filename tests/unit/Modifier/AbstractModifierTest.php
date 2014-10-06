@@ -6,12 +6,12 @@
  * @link http://veinteractive.com
  */
 
-namespace Ve\LogicProcessor\Assertion;
+namespace Ve\LogicProcessor\Modifier;
 
 use Codeception\TestCase\Test;
 use Ve\LogicProcessor\AbstractAssertion;
 
-abstract class AbstractAssertionTest extends Test
+abstract class AbstractModifierTest extends Test
 {
 
 	/**
@@ -31,9 +31,9 @@ abstract class AbstractAssertionTest extends Test
 	}
 
 	/**
-	 * @param mixed $target
-	 * @param mixed $value
-	 * @param bool  $expected
+	 * @param int $target
+	 * @param int $value
+	 * @param int $expected
 	 *
 	 * @dataProvider testData
 	 */

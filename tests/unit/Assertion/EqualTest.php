@@ -6,7 +6,7 @@
  * @link http://veinteractive.com
  */
 
-namespace Ve\LogicProcessor\Modifier;
+namespace Ve\LogicProcessor\Assertion;
 
 use Codeception\TestCase\Test;
 
