@@ -44,7 +44,7 @@ abstract class AbstractFindingLibrary extends AbstractLibrary
 	 *
 	 * @param string $name
 	 *
-	 * @return AbstractAssertion
+	 * @return mixed
 	 */
 	public function getInstance($name)
 	{
