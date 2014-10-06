@@ -9,7 +9,7 @@ Library to process logical rules and apply outcomes based on the result of those
 
 ## How it all works
 
-The package consists of `Rule`s, `Assertion`s, `Rule`s, `Modifier`s, `RuleSet`s and a `Processor`.
+The package consists of `Rule`s, `Assertion`s, `Modifier`s, `RuleSet`s and a `Processor`.
 
 The main process centers around the `Processor`. This is responsible for taking a `Context` and a `Target` to work out
 which sets of rules are valid and applying their results. The `Processor` takes a `Context` and applies `Rule`s to it.
