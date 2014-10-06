@@ -40,7 +40,7 @@ abstract class AbstractModifier
 	/**
 	 * @param mixed $value
 	 *
-	 * @return bool
+	 * @return mixed
 	 */
 	abstract function run($value);
 
