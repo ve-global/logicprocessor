@@ -10,7 +10,7 @@ namespace Ve\LogicProcessor\Modifier;
 
 use Ve\LogicProcessor\AbstractModifier;
 
-class Reduction extends AbstractModifier
+class Decrease extends AbstractModifier
 {
 
 	/**

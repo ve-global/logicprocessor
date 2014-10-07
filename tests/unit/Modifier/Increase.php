@@ -8,10 +8,10 @@
 
 namespace Ve\LogicProcessor\Modifier;
 
-class ReductionTest extends AbstractModifierTest
+class Increase extends AbstractModifierTest
 {
 
-	protected $className = 'Ve\LogicProcessor\Modifier\Reduction';
+	protected $className = 'Ve\LogicProcessor\Modifier\Increase';
 
 	/**
 	 * Should return sets of data that match the needed data for `testRun()`.
