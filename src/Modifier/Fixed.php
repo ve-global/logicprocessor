@@ -11,23 +11,21 @@ namespace Ve\LogicProcessor\Modifier;
 use Ve\LogicProcessor\AbstractModifier;
 
 /**
- * Returns the percentage of the percentage of the $value in run()
+ * Returns a fixed value
  *
  * @package Ve\LogicProcessor\Modifier
  */
-class Percent extends AbstractModifier
+class Fixed extends AbstractModifier
 {
 
 	/**
 	 * @param mixed $value
 	 *
-	 * @return double
+	 * @return mixed
 	 */
 	function run($value)
 	{
-		$percentage = $this->getTargetValue();
-
-		return $value - (($percentage / 100) * $value);
+		return $this->getTargetValue();
 	}
 
 }
