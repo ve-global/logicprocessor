@@ -29,6 +29,7 @@ A `Result` should modify data within the `Target`. They work in much the same wa
  and pass this to a `Modifier` and apply the result.
 
 [`RuleSet` Diagram](resources/ruleset.svg)
+
 [Processor Flow](resources/processor_flow.svg)
 
 [Sample code](https://github.com/ve-interactive/logicprocessor/wiki/Sample-test-code)

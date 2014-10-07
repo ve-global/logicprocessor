@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="744.09448819"
-   height="1052.3622047"
+   width="132.69528"
+   height="168.53693"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="logic processor class structure.svg">
+   sodipodi:docname="ruleset.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="313.51055"
-     inkscape:cy="627.94818"
+     inkscape:cx="306.33542"
+     inkscape:cy="-246.64435"
      inkscape:document-units="px"
      inkscape:current-layer="g3779"
      showgrid="false"
@@ -36,10 +36,20 @@
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:snap-global="true"
-     showguides="false">
+     showguides="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
     <inkscape:grid
        type="xygrid"
-       id="grid3871" />
+       id="grid3871"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-7.1751298px"
+       originy="-874.59253px" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -55,7 +65,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-7.1751298,-9.2327245)">
     <g
        id="g3779"
        transform="translate(168.69548,16.162437)">
