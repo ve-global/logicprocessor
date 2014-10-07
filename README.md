@@ -9,11 +9,11 @@ Library to process logical rules and apply outcomes based on the result of those
 
 ## How it all works
 
-The package consists of `Rule`s, `Assertion`s, `Modifier`s, `RuleSet`s and a `Processor`.
+The package consists of `Rule`s, `Assertion`s, `Results`s, `Modifier`s, `RuleSet`s and a `Processor`.
 
 The main process centers around the `Processor`. This is responsible for taking a `Context` and a `Target` to work out
 which sets of rules are valid and applying their results. The `Processor` takes a `Context` and applies `Rule`s to it.
-If the `Rule`s pass then a `Modifier` is applied to the `Target`.
+If the `Rule`s pass then a `Modifier` is applied to the `Target` to modify one or more of the `Target`'s properties.
 
 The `Context` is the data that is being inspected whilst the `Target` is the data that is being modified and is passed
 by reference. Both can be an array or object or whatever you want and both can be the same thing.
@@ -27,7 +27,10 @@ or failure.
 
 A `Result` should modify data within the `Target`. They work in much the same way as `Rule`s in that they select data
  and pass this to a `Modifier` and apply the result.
- 
+
+[`RuleSet` Diagram](resources/ruleset.svg)
+[Processor Flow](resources/processor_flow.svg)
+
 [Sample code](https://github.com/ve-interactive/logicprocessor/wiki/Sample-test-code)
 
 ### Why is this all so complicated
