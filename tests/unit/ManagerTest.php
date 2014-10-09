@@ -29,13 +29,13 @@ class ManagerTest extends Test
 		$name = 'test';
 
 		$this->assertFalse(
-			$this->manager->hasInstance($name)
+			$this->manager->hasEnvironment($name)
 		);
 
-		$this->manager->addInstance($name, [], [], [], []);
+		$this->manager->addEnvironment($name, [], [], [], []);
 
 		$this->assertTrue(
-			$this->manager->hasInstance($name)
+			$this->manager->hasEnvironment($name)
 		);
 	}
 
@@ -51,7 +51,7 @@ class ManagerTest extends Test
 	{
 		$name = 'foobar';
 
-		$this->manager->addInstance($name, [], [], [], []);
+		$this->manager->addEnvironment($name, [], [], [], []);
 
 		$builder = $this->manager->getBuilderInstance($name);
 

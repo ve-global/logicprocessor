@@ -10,7 +10,7 @@ namespace Ve\LogicProcessor;
 
 use InvalidArgumentException;
 
-class AbstractLibrary
+class AbstractLibrary implements LibraryInterface
 {
 
 	protected $notFoundError = ' is not a known item.';

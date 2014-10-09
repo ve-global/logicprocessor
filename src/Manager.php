@@ -28,14 +28,14 @@ class Manager
 	protected $builderClassName = 'Ve\LogicProcessor\Builder';
 
 	/**
-	 * Contains a list of known instances and their related libraries.
+	 * Contains a list of known environments and their related libraries.
 	 *
 	 * @var array
 	 */
-	protected $instances = [];
+	protected $environments = [];
 
 	/**
-	 * Adds a new instance that can be constructed. The library values should be an array of name => class, a closure that
+	 * Adds a new environment that can be constructed. The library values should be an array of name => class, a closure that
 	 * returns this or a pre-constructed AbstractLibrary.
 	 *
 	 * @param string         $name
@@ -44,9 +44,9 @@ class Manager
 	 * @param array|Callable $results
 	 * @param array|Callable $modifiers
 	 */
-	public function addInstance($name, $rules, $assertions, $results, $modifiers)
+	public function addEnvironment($name, $rules, $assertions, $results, $modifiers)
 	{
-		$this->instances[$name] = [
+		$this->environments[$name] = [
 			'rule' => $rules,
 			'assertion' => $assertions,
 			'result' => $results,
@@ -55,15 +55,15 @@ class Manager
 	}
 
 	/**
-	 * Returns true if the given $name is a known set of libraries.
+	 * Returns true if the given $name is a known environment.
 	 *
 	 * @param string $name
 	 *
 	 * @return bool
 	 */
-	public function hasInstance($name)
+	public function hasEnvironment($name)
 	{
-		return isset($this->instances[$name]);
+		return isset($this->environments[$name]);
 	}
 
 	/**
@@ -75,14 +75,14 @@ class Manager
 	 */
 	public function getBuilderInstance($name)
 	{
-		if ( ! $this->hasInstance($name))
+		if ( ! $this->hasEnvironment($name))
 		{
 			throw new InvalidArgumentException($name. ' is not a known instance.');
 		}
 
 		// TODO: Find a more awesome way to do this.
 		$libraries = [];
-		foreach ($this->instances[$name] as $type => $identifier)
+		foreach ($this->environments[$name] as $type => $identifier)
 		{
 			$libraries[] = $this->createLibrary($identifier, $type);
 		}
@@ -100,7 +100,7 @@ class Manager
 	 * @param array|string|Callable $identifier
 	 * @param string|null           $type
 	 *
-	 * @return AbstractLibrary
+	 * @return LibraryInterface
 	 */
 	public function createLibrary($identifier, $type = null)
 	{
@@ -109,7 +109,6 @@ class Manager
 			return $this->createFromArray($identifier, $type);
 		}
 
-		//
 		if (is_callable($identifier))
 		{
 			return $identifier();
@@ -123,13 +122,13 @@ class Manager
 	 * @param array  $array
 	 * @param string $type
 	 *
-	 * @return AbstractLibrary
+	 * @return LibraryInterface
 	 */
 	protected function createFromArray($array, $type)
 	{
 		$libraryClass = 'Ve\LogicProcessor\\'.ucfirst($type).'Library';
 
-		/** @type AbstractLibrary $library */
+		/** @type LibraryInterface $library */
 		$library = new $libraryClass;
 
 		// TODO: Update the add function to take a single array for optimisations

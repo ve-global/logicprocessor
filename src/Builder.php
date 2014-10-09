@@ -19,30 +19,30 @@ class Builder
 {
 
 	/**
-	 * @var RuleLibrary
+	 * @var LibraryInterface
 	 */
 	protected $ruleLibrary;
 
 	/**
-	 * @var AssertionLibrary
+	 * @var LibraryInterface
 	 */
 	protected $assertionLibrary;
 
 	/**
-	 * @var ResultLibrary
+	 * @var LibraryInterface
 	 */
 	protected $resultLibrary;
 
 	/**
-	 * @var ModifierLibrary
+	 * @var LibraryInterface
 	 */
 	protected $modifierLibrary;
 
 	public function __construct(
-		RuleLibrary $ruleLibrary,
-		AssertionLibrary $assertionLibrary,
-		ResultLibrary $resultLibrary,
-		ModifierLibrary $modifierLibrary
+		LibraryInterface $ruleLibrary,
+		LibraryInterface $assertionLibrary,
+		LibraryInterface $resultLibrary,
+		LibraryInterface $modifierLibrary
 	)
 	{
 		$this->ruleLibrary = $ruleLibrary;
@@ -230,7 +230,7 @@ class Builder
 	}
 
 	/**
-	 * @return ModifierLibrary
+	 * @return LibraryInterface
 	 */
 	public function getModifierLibrary()
 	{
@@ -238,7 +238,7 @@ class Builder
 	}
 
 	/**
-	 * @param ModifierLibrary $modifierLibrary
+	 * @param LibraryInterface $modifierLibrary
 	 */
 	public function setModifierLibrary($modifierLibrary)
 	{
@@ -246,7 +246,7 @@ class Builder
 	}
 
 	/**
-	 * @return ResultLibrary
+	 * @return LibraryInterface
 	 */
 	public function getResultLibrary()
 	{
@@ -254,7 +254,7 @@ class Builder
 	}
 
 	/**
-	 * @param ResultLibrary $resultLibrary
+	 * @param LibraryInterface $resultLibrary
 	 */
 	public function setResultLibrary($resultLibrary)
 	{
@@ -262,7 +262,7 @@ class Builder
 	}
 
 	/**
-	 * @return AssertionLibrary
+	 * @return LibraryInterface
 	 */
 	public function getAssertionLibrary()
 	{
@@ -270,7 +270,7 @@ class Builder
 	}
 
 	/**
-	 * @param AssertionLibrary $assertionLibrary
+	 * @param LibraryInterface $assertionLibrary
 	 */
 	public function setAssertionLibrary($assertionLibrary)
 	{
@@ -278,7 +278,7 @@ class Builder
 	}
 
 	/**
-	 * @return RuleLibrary
+	 * @return LibraryInterface
 	 */
 	public function getRuleLibrary()
 	{
@@ -286,7 +286,7 @@ class Builder
 	}
 
 	/**
-	 * @param RuleLibrary $ruleLibrary
+	 * @param LibraryInterface $ruleLibrary
 	 */
 	public function setRuleLibrary($ruleLibrary)
 	{

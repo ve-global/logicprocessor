@@ -4,6 +4,7 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/ve-interactive/logicprocessor/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ve-interactive/logicprocessor/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ve-interactive/logicprocessor/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ve-interactive/logicprocessor/?branch=master)
 [![HHVM Status](http://hhvm.h4cc.de/badge/ve-interactive/logicprocessor.svg)](http://hhvm.h4cc.de/package/ve-interactive/logicprocessor)
+[![Latest Stable Version](https://poser.pugx.org/ve-interactive/logicprocessor/v/stable.svg)](https://packagist.org/packages/ve-interactive/logicprocessor)
 
 Library to process logical rules and apply outcomes based on the result of those rules.
 
@@ -47,3 +48,23 @@ the various libraries so the `Builder` can create the needed classes for you.
 The format of the array is represented in the JSON object below.
 
 https://github.com/ve-interactive/logicprocessor/wiki/JSON-data-structure
+
+## Manager
+
+The `Manager` class can be used to keep track of multiple sets of the libraries that `Builder` requires. Used in conjunction
+with a DIC solution this can provide you with an easy way to manage multiple rule "environments".
+
+For example, if you used the logic processor to process rules for product promotions and taxes you most likely want to use
+different rules and results for both. Using the `Manager` class you can set up an environment for each to be able to quickly
+create rule sets for both.
+
+Adding a new environment is done via the `Manager::addEnvironment()` method, this takes a name and four "things" for each
+needed library for `Rule`, `Assertion`, `Result` and `Modifier`. The "thing" can be an array, string or callable.
+
+If an array or `ArrayAccess` is passed then a new library object is created and populated with the values in the array
+using `AbstractLibrary::add()` with the array keys as the name.
+
+If the thing passed is callable then it is expected to return an instance of `LibraryInterface`.
+
+Finally if the above conditions are not met then the value is treated as a string class name and the `Manager` will
+attempt to construct it as a new object, passing nothing to the constructor.
