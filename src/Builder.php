@@ -229,4 +229,68 @@ class Builder
 		return $modifier;
 	}
 
+	/**
+	 * @return ModifierLibrary
+	 */
+	public function getModifierLibrary()
+	{
+		return $this->modifierLibrary;
+	}
+
+	/**
+	 * @param ModifierLibrary $modifierLibrary
+	 */
+	public function setModifierLibrary($modifierLibrary)
+	{
+		$this->modifierLibrary = $modifierLibrary;
+	}
+
+	/**
+	 * @return ResultLibrary
+	 */
+	public function getResultLibrary()
+	{
+		return $this->resultLibrary;
+	}
+
+	/**
+	 * @param ResultLibrary $resultLibrary
+	 */
+	public function setResultLibrary($resultLibrary)
+	{
+		$this->resultLibrary = $resultLibrary;
+	}
+
+	/**
+	 * @return AssertionLibrary
+	 */
+	public function getAssertionLibrary()
+	{
+		return $this->assertionLibrary;
+	}
+
+	/**
+	 * @param AssertionLibrary $assertionLibrary
+	 */
+	public function setAssertionLibrary($assertionLibrary)
+	{
+		$this->assertionLibrary = $assertionLibrary;
+	}
+
+	/**
+	 * @return RuleLibrary
+	 */
+	public function getRuleLibrary()
+	{
+		return $this->ruleLibrary;
+	}
+
+	/**
+	 * @param RuleLibrary $ruleLibrary
+	 */
+	public function setRuleLibrary($ruleLibrary)
+	{
+		$this->ruleLibrary = $ruleLibrary;
+	}
+
 }
